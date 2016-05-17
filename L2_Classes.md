@@ -6,7 +6,7 @@ Example of VBA class:
 
 First edit name to something like cEmployee in the`(Name)` box
 
-<img src="http://i.imgur.com/c7wO4bz.png" alt="Drawing" style="height: 50px;"/>
+<img src="http://i.imgur.com/c7wO4bz.png" alt="Drawing" height="500" />
 
 ```VB
 Option Explicit
