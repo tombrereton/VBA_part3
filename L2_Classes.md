@@ -49,6 +49,7 @@ End Property
 '''''''''''''''
 
 Property Get FirstName() As String
+    'finds the location of the first space and then splits the string at that point to return the first name
     FirstName = Left(pName, WorksheetFunction.Search(" ", pName) - 1)
 End Property
 
@@ -56,7 +57,9 @@ End Property
 'HoursPerWeek property
 '''''''''''''''
 
+'writes in hours per week as one simple number
 Property Let HoursPerWeek(value As Integer)
+    'if the hours per week are greater than 35 it is considered overtime
     NormalHrs = WorksheetFunction.Min(35, value)
     OvertimeHrs = WorksheetFunction.Max(0, value - 35)
 End Property
@@ -66,7 +69,7 @@ End Property
 '''''''''''''''
 
 Public Function WeeklyPay() As Double
- WeeklyPay = NormalHrs * pRate + OvertimeHrs * pRate * 1.5
+    WeeklyPay = NormalHrs * pRate + OvertimeHrs * pRate * 1.5
 End Function
     
 ```
