@@ -11,35 +11,83 @@ First edit name to something like cEmployee in the`(Name)` box
 ```VB
 Option Explicit
 
-Private pName as String
-Private pRate as double
+Private pName As String
+Private pRate As Double
+Private NormalHrs As Integer
+Private OvertimeHrs As Integer
 
 '''''''''''''''
-'pName property
+'Name property
 '''''''''''''''
 
 'Property get allows reading of the variable pName
-Property get Name() as String
+Property Get Name() As String
     Name = pName
 End Property
 
 'Property let allows writing to variable pName
-Property let Name(value as string)
-    pName = left(value, 30) 'limits string length to 30 characters
-end property
+Property Let Name(value As String)
+    pName = Left(value, 30) 'limits string length to 30 characters
+End Property
 
 '''''''''''''''
-'pRate property
+'Rate property
 '''''''''''''''
 
 'Property get allows reading of the variable pRate
-Property get Rate() as double
+Property Get Rate() As Double
     Rate = pRate
 End Property
 
 'Property let allows writing to variable pRate
-Property let Rate(value as double)
-    pRate = max(0, value) 'pRate must be greater than zero
-end property
+Property Let Rate(value As Double)
+    pRate = WorksheetFunction.Max(0, value) 'pRate must be greater than zero
+End Property
+
+'''''''''''''''
+'FirstName property
+'''''''''''''''
+
+Property Get FirstName() As String
+    FirstName = Left(pName, WorksheetFunction.Search(" ", pName) - 1)
+End Property
+
+'''''''''''''''
+'HoursPerWeek property
+'''''''''''''''
+
+Property Let HoursPerWeek(value As Integer)
+    NormalHrs = WorksheetFunction.Min(35, value)
+    OvertimeHrs = WorksheetFunction.Max(0, value - 35)
+End Property
+
+'''''''''''''''
+'WeeklyPay function
+'''''''''''''''
+
+Public Function WeeklyPay() As Double
+ WeeklyPay = NormalHrs * pRate + OvertimeHrs * pRate * 1.5
+End Function
     
+```
+
+Then to use this class we run a subroutine:
+
+```VB
+Option Explicit
+
+Sub testemp()
+
+    'instantiate cEmployee as emp
+    Dim emp As New cEmployee
+    
+    'the class properties must be set
+    emp.Name = "Ralph McWiggins"
+    emp.Rate = 15
+    emp.HoursPerWeek = 42
+    
+    'the employees weekly pay is desribed in a sentence
+    MsgBox emp.FirstName & "'s weekly pay is £" & emp.WeeklyPay & "/wk"
+
+End Sub
 ```
