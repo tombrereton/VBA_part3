@@ -81,18 +81,18 @@ End Sub
 ```VB
 Sub RangeToArray()
 
-    Dim i as Integer, j as Integer
-    Dim values as Variant
+    Dim i As Integer, j As Integer
+    Dim arrayValues As Variant
     
-    values = Range(“A1:C10”).Value
-    
-    For i=Lbound(values, 1) To Ubound(values, 1)
-        For j=Lbound(values, 2) To Ubound(values, 2)
-            values(I,j) = values(I,j)*2
+    arrayValues = Range("A1:B3").Value
+        
+    For i = LBound(arrayValues, 1) To UBound(arrayValues, 1)
+        For j = LBound(arrayValues, 2) To UBound(arrayValues, 2)
+            arrayValues(i, j) = arrayValues(i, j) * 2
         Next j
     Next i
     
-    Range(“A1:C10”).Value
+    Range("A1:B3").Value = arrayValues
     
 End Sub
 ```
