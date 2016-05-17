@@ -4,6 +4,10 @@ In this lecture we covered classes and learn how to implement them in vba.
 
 Example of VBA class:
 
+First edit name to something like cEmployee in the`(Name)` box
+
+<img src="http://i.imgur.com/c7wO4bz.png" alt="Drawing" style="height: 50px;"/>
+
 ```VB
 Option Explicit
 
@@ -15,7 +19,7 @@ Private pRate as double
 '''''''''''''''
 
 'Property get allows reading of the variable pName
-Property get Name()
+Property get Name() as String
     Name = pName
 End Property
 
@@ -29,7 +33,7 @@ end property
 '''''''''''''''
 
 'Property get allows reading of the variable pRate
-Property get Rate()
+Property get Rate() as double
     Rate = pRate
 End Property
 
