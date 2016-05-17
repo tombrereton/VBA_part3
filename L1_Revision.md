@@ -107,7 +107,7 @@ End Sub
 
 * Looping structures - two main types
     * `For ... Next` where you iterate for a predicted range of values.
-    * `Do ... While` where you iterate until a boolean condition is met
+    * `Do While ... Loop` where you iterate until a boolean condition is met
 
 ####Subroutines and functions
 
